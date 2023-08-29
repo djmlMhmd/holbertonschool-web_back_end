@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""function with integers n and max_delay as 
+"""function with integers n and max_delay as
 arguments that measures the total execution"""
 
 import asyncio
@@ -11,21 +11,21 @@ async def wait_random(max_delay: int = 10) -> float:
     """
     Asynchronous routine that spawns wait_random
     n times with specified max_delay.
+    """
+    
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
 
-    Args:
+
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """    Args:
         n (int): Number of times to spawn wait_random.
         max_delay (int): The maximum delay in seconds for wait_random.
 
     Returns:
         List[float]: List of delays in ascending order.
     """
-        
-    delay = random.uniform(0, max_delay)
-    await asyncio.sleep(delay)
-    return delay
-
-async def wait_n(n: int, max_delay: int) -> List[float]:
-
     tasks = [wait_random(max_delay) for _ in range(n)]
 
     delays = await asyncio.gather(*tasks)
