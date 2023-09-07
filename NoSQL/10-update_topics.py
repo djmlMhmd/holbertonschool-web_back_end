@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Python module that manitpulates mongo DB"""
+"""A python module that manitpulates mongo DB"""
 
 
-def insert_school(mongo_collection, **kwargs):
-    """Inserts a new document in a collection based on kwargs"""
+def update_topics(mongo_collection, name, topics):
+    """A function that changes all topics of a school document
+    based on the name"""
 
-    the_object = mongo_collection.insert_one(kwargs)
-    return the_object.inserted_id
+    mongo_collection.update_many(
+        {"name": name},
+        {"$set": {"topics": topics}}
+        )
