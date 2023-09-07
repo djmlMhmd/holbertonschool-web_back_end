@@ -1,1 +1,2 @@
-// Script deletes a document db.school.deleteMany({name: "Holberton school"})
+// Script deletes a document 
+db.school.deleteMany({name: "Holberton school"})
