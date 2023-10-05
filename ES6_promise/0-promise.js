@@ -1,16 +1,10 @@
-function getResponseFromAPI() {
+/* eslint-disable */
+
+export default function getResponseFromAPI() {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			const data = { message: 'API response data' };
-			resolve(data);
-		}, 2000);
+			const apiResponse = { data: 'Some data from API' };
+			resolve(apiResponse);
+		}, 1000);
 	});
 }
-
-getResponseFromAPI
-	.then((response) => {
-		console.log('API Response', response);
-	})
-	.catch((error) => {
-		console.error('Error', error);
-	});
