@@ -1,0 +1,30 @@
+{
+  "name": "unittests_in_js",
+  "version": "1.0.0",
+  "description": "Unit testing in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "unittests",
+    "javascript",
+    "mocha",
+    "chai",
+    "sinon",
+    "express",
+    "node"
+  ],
+  "author": "Djamaldine Mohamed",
+  "license": "ISC",
+  "bugs": {},
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "sinon": "^17.0.1"
+  }
+}
