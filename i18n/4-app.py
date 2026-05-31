@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Babel setup
+Force locale with URL parameter
 """
 
 from flask import Flask, render_template, request
@@ -8,7 +8,6 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config(object):
@@ -20,26 +19,29 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object("3-app.Config")
+app.config.from_object(Config)
 
 
-@app.route("/")
-def index():
-    """
-    function that render index.html template
-    """
-    return render_template("3-index.html")
-
-
-@babel.localeselector
 def get_locale():
     """
-    Get the current locale
+    Determine locale from URL parameter, then fall back to Accept-Language
     """
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
         return locale
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
+babel = Babel()
+babel.init_app(app, locale_selector=get_locale)
+
+
+@app.route("/")
+def index():
+    """
+    Render the index template
+    """
+    return render_template("4-index.html")
 
 
 if __name__ == "__main__":
