@@ -74,6 +74,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
 
 
 def main():
+    """Retrieve users from the database and log their data with PII redacted."""
     database = get_db()
     cursor = database.cursor()
     cursor.execute("SELECT * FROM users")
